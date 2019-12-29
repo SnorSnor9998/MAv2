@@ -21,6 +21,25 @@
     <string name="nav_newEvent">New Activity</string>
     <string name="nav_profile">My Profile</string>
 
+
+    <string name="text_searchbar">Search...</string>
+    <string name="hint_title">Title...</string>
+    <string name="hint_address">Address</string>
+
+
+    <string name="text_createActivity">Create New Activity</string>
+    <string name="cna_title">Activity Title</string>
+    <string name="cna_desc">Description</string>
+    <string name="cna_address">Address</string>
+    <string name="cna_date">Date</string>
+    <string name="cna_time">Time</string>
+    <string name="cna_createA">Create Activity</string>
+    <string name="cna_foodcat">Type of Food</string>
+    <string name="cna_datepicker">Date Picker</string>
+    <string name="cna_timestart">Start</string>
+    <string name="cna_timeend">End</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

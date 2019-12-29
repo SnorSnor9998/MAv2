@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,18 +9,230 @@
     android:layout_height="match_parent"
     tools:context=".addactivity">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NIGAA ADD ACTIVITY!!"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_createActivity"
+        android:textColor="@color/theme_color"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:fontFamily="@font/aldrich"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="64dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_title"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_title"
+                app:layout_constraintTop_toTopOf="@+id/cna_title" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_time"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_time_from"
+                app:layout_constraintTop_toTopOf="@+id/cna_time_from" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_address"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_address"
+                app:layout_constraintTop_toTopOf="@+id/cna_address" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_desc"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_desc"
+                app:layout_constraintTop_toTopOf="@+id/cna_desc" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_foodcat"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkBox"
+                app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+            <EditText
+                android:id="@+id/cna_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/hint_title"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/cna_address"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/hint_address"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cna_date" />
+
+            <EditText
+                android:id="@+id/cna_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cna_address" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="32dp"
+                android:text="CheckBox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cna_desc" />
+
+            <Button
+                android:id="@+id/cna_time_from"
+                android:layout_width="95dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+
+                android:ems="10"
+                android:text="@string/cna_timestart"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cna_title"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/theme_color"/>
+
+            <Button
+                android:id="@+id/cna_time_to"
+                android:layout_width="95dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                app:layout_constraintEnd_toEndOf="@+id/cna_title"
+                app:layout_constraintTop_toTopOf="@+id/cna_time_from"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/theme_color"
+                android:text="@string/cna_timeend"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tv_till"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="-"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_time_to"
+                app:layout_constraintStart_toEndOf="@+id/cna_time_from"
+                app:layout_constraintTop_toBottomOf="@+id/cna_title" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_date"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/cna_date"
+                app:layout_constraintTop_toTopOf="@+id/cna_date" />
+
+            <Button
+                android:id="@+id/cna_date"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/theme_color"
+
+                android:ems="10"
+
+                android:text="@string/cna_datepicker"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_till" />
+
+            <Button
+                android:id="@+id/cna_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/cna_createA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox"
+                android:background="@drawable/custom_button"
+                android:backgroundTint="@color/theme_color"
+                android:textColor="@android:color/white"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

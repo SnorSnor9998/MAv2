@@ -18,6 +18,7 @@ class homev2Activity : AppCompatActivity() {
             return@OnNavigationItemSelectedListener true
         }
 //        R.id.nav_myProfile ->{
+//        launchMyProfileFragment()
 //            return@OnNavigationItemSelectedListener true
 //        }
     }
@@ -30,6 +31,8 @@ class homev2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_homev2)
         launchHomeFragment()
         bottom_navigationV2.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+
 
     }
 
@@ -50,5 +53,14 @@ class homev2Activity : AppCompatActivity() {
         trans.commit()
 
     }
+//    fun launchMyProfileFragment(){
+//        val trans = supportFragmentManager.beginTransaction()
+//        val fragment = //call the activity(fragment)
+//        trans.replace(R.id.fragment_holder,fragment)
+//        trans.addToBackStack(null)
+//        trans.commit()
+//
+//    }
+
 
 }

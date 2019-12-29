@@ -6,12 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".homev2Activity">
 
-<!--    <fragment-->
-<!--        android:id="@+id/homeactivity_fragment"-->
-<!--        android:name="com.example.mav2.homeview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_above="@+id/bottom_navigationV2"/>-->
+
 
     <LinearLayout
         android:id="@+id/fragment_holder"
@@ -27,8 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/buttom_navi" />
+        app:menu="@menu/buttom_navi"
+        app:itemTextColor="@color/theme_color"
+        app:itemIconTint="@color/theme_color"
+        />
 
 
 </RelativeLayout>
