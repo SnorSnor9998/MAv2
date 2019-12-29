@@ -1,0 +1,74 @@
+package com.example.mav2
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.text.TextUtils
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import org.jetbrains.anko.toast
+
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var mAuth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        mAuth = FirebaseAuth.getInstance()
+
+//        if(mAuth.currentUser != null){
+//            val intent = Intent(this,homeActivity::class.java)
+//            finish()
+//            startActivity(intent)
+//        }
+
+
+        button_register.setOnClickListener {
+
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        button_login.setOnClickListener {
+            val email = tf_email.text.toString()
+            val pass = tf_password.text.toString()
+
+            if(TextUtils.isEmpty(email)){
+                tf_email.error = "Email is Require"
+                return@setOnClickListener
+            }
+
+            if(TextUtils.isEmpty(pass)){
+                tf_password.error = "Password is Require"
+                return@setOnClickListener
+            }
+
+            mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener{
+                if(!it.isSuccessful){
+                    toast("Email or Password Invalid")
+                    return@addOnCompleteListener
+                }else{
+
+                    val intent = Intent(this,homeActivity::class.java)
+                    finish()
+                    startActivity(intent)
+
+
+                }
+            }
+
+
+
+        }
+
+
+
+    }
+}
