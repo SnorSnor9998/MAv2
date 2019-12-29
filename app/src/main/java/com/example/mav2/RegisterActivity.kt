@@ -34,6 +34,7 @@ class RegisterActivity : AppCompatActivity() {
 
         text_gologinpage.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
+            finish()
             startActivity(intent)
 
         }
