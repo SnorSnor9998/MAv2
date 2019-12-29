@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-//        if(mAuth.currentUser != null){
-//            val intent = Intent(this,homeActivity::class.java)
-//            finish()
-//            startActivity(intent)
-//        }
+        if(mAuth.currentUser != null){
+            val intent = Intent(this,homev2Activity::class.java)
+            finish()
+            startActivity(intent)
+        }
 
 
         button_register.setOnClickListener {
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     return@addOnCompleteListener
                 }else{
 
-                    val intent = Intent(this,homeActivity::class.java)
+                    val intent = Intent(this,homev2Activity::class.java)
                     finish()
                     startActivity(intent)
 
