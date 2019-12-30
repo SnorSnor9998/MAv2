@@ -90,8 +90,8 @@
                 android:text="@string/cna_foodcat"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/checkBox"
-                app:layout_constraintTop_toTopOf="@+id/checkBox" />
+                app:layout_constraintEnd_toStartOf="@+id/cb_dryfood"
+                app:layout_constraintTop_toTopOf="@+id/cb_dryfood" />
 
             <EditText
                 android:id="@+id/cna_title"
@@ -104,7 +104,7 @@
                 android:hint="@string/hint_title"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/cna_butt_uploadphoto" />
 
             <EditText
                 android:id="@+id/cna_address"
@@ -133,13 +133,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/cna_address" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cb_dryfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="130dp"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="32dp"
-                android:text="CheckBox"
+                android:text="@string/food_dryfoods"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cna_desc" />
 
@@ -162,14 +162,14 @@
             <Button
                 android:id="@+id/cna_time_to"
                 android:layout_width="95dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                app:layout_constraintEnd_toEndOf="@+id/cna_title"
-                app:layout_constraintTop_toTopOf="@+id/cna_time_from"
+                android:layout_height="35dp"
                 android:background="@drawable/custom_button"
                 android:backgroundTint="@color/theme_color"
+                android:ems="10"
                 android:text="@string/cna_timeend"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@+id/cna_title"
+                app:layout_constraintTop_toTopOf="@+id/cna_time_from" />
 
             <TextView
                 android:id="@+id/tv_till"
@@ -217,16 +217,80 @@
                 android:id="@+id/cna_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/cna_createA"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/custom_button"
                 android:backgroundTint="@color/theme_color"
-                android:textColor="@android:color/white"/>
+                android:text="@string/cna_createA"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cb_refriger" />
 
+            <Button
+                android:id="@+id/cna_butt_uploadphoto"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:text="@string/cna_upPhoto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <CheckBox
+                android:id="@+id/cb_fandv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/food_fandv"
+                app:layout_constraintStart_toStartOf="@+id/cb_dryfood"
+                app:layout_constraintTop_toBottomOf="@+id/cb_dryfood" />
+
+            <CheckBox
+                android:id="@+id/cb_fresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/food_fresh"
+                app:layout_constraintStart_toStartOf="@+id/cb_fandv"
+                app:layout_constraintTop_toBottomOf="@+id/cb_fandv" />
+
+            <CheckBox
+                android:id="@+id/cb_frozen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/food_letitgoooo"
+                app:layout_constraintStart_toStartOf="@+id/cb_fresh"
+                app:layout_constraintTop_toBottomOf="@+id/cb_fresh" />
+
+            <CheckBox
+                android:id="@+id/cb_meat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/food_meat"
+                app:layout_constraintStart_toStartOf="@+id/cb_frozen"
+                app:layout_constraintTop_toBottomOf="@+id/cb_frozen" />
+
+            <CheckBox
+                android:id="@+id/cb_refriger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/food_refrige"
+                app:layout_constraintStart_toStartOf="@+id/cb_meat"
+                app:layout_constraintTop_toBottomOf="@+id/cb_meat" />
+
+            <TextView
+                android:id="@+id/tv_typefooderror"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/textView18"
+                app:layout_constraintStart_toStartOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

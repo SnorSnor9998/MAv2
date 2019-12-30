@@ -38,6 +38,17 @@
     <string name="cna_datepicker">Date Picker</string>
     <string name="cna_timestart">Start</string>
     <string name="cna_timeend">End</string>
+    <string name="cna_upPhoto">Upload A Photo</string>
+
+
+    <string name="food_dryfoods">Dry foods</string>
+    <string name="food_fandv">Fruits and vegetables</string>
+    <string name="food_fresh">Fresh foods</string>
+    <string name="food_refrige">Refrigerated</string>
+    <string name="food_letitgoooo">Frozen Food</string>
+    <string name="food_meat">Meat</string>
+
+    <string name="validate_required">Required</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
