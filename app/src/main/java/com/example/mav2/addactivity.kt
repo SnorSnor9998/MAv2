@@ -18,6 +18,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.mav2.`class`.fkactivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_addactivity.*
 import java.text.SimpleDateFormat
@@ -33,6 +36,9 @@ class addactivity : Fragment() {
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.US)
 
     var selectedPhotoUri : Uri? = null
+
+    private var fkact = fkactivity()
+
 
     override fun onStart() {
         super.onStart()
@@ -150,21 +156,21 @@ class addactivity : Fragment() {
             }
 
 
+            fkact.activity_title = cna_title.text.toString()
+            fkact.activity_time_start = cna_time_from.text.toString()
+            fkact.activity_time_end = cna_time_to.text.toString()
+            fkact.activity_date = cna_date.text.toString()
+            fkact.activity_address = cna_address.text.toString()
+            fkact.activity_desc = cna_desc.text.toString()
+            fkact.creator_id = FirebaseAuth.getInstance().uid.toString()
+
+
 
             if(validate == true){
-                //uploadImageToFirebase()
-                createFKActivity()
+                uploadImageToFirebase()
                 Toast.makeText(this.requireContext(),"Activity is created",Toast.LENGTH_SHORT).show()
             }
-
         }
-
-    }
-
-    private fun createFKActivity(){
-
-
-
     }
 
     private fun uploadImageToFirebase (){
@@ -172,7 +178,24 @@ class addactivity : Fragment() {
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/image/$filename")
 
-        ref.putFile(selectedPhotoUri!!)
+        ref.putFile(selectedPhotoUri!!).addOnSuccessListener {
+            ref.downloadUrl.addOnSuccessListener {
+
+                createFKActivity(it.toString())
+                //fkact.activity_imageUrl = it.toString()
+            }
+        }
+
+
+    }
+    private fun createFKActivity(imageUrl : String){
+        val filename = UUID.randomUUID().toString()
+        val dbact = FirebaseDatabase.getInstance().getReference("Activity/$filename")
+
+        fkact.activity_imageUrl = imageUrl
+        fkact.activity_id = filename
+
+        dbact.setValue(fkact)
 
     }
 

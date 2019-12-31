@@ -124,6 +124,8 @@ class RegisterActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid ?:""
         val ref = FirebaseDatabase.getInstance().getReference("/Users/$uid")
 
+        fbuser.user_id = uid
+
         ref.setValue(fbuser)
 
     }
