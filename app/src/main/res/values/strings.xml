@@ -10,6 +10,7 @@
 
 
     <string name="text_username">Username</string>
+    <string name="text_name">Name</string>
     <string name="text_contactNum">Ph. No</string>
     <string name="text_gender">Gender</string>
     <string name="gender_male">Male</string>

@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.text.TextUtils
 import android.widget.Toast
+import com.example.mav2.`class`.user
+import com.google.firebase.database.FirebaseDatabase
 import org.jetbrains.anko.toast
 
 
@@ -41,18 +43,35 @@ class RegisterActivity : AppCompatActivity() {
 
         button_register.setOnClickListener {
 
-//            val username = tf_username.text.toString()
+
+            val username = tf_username.text.toString()
+            val name = tf_name.text.toString()
             val email = tf_email.text.toString()
             val pass = tf_password.text.toString()
-//            val phnum = tf_phnum.text.toString()
-//            var gender : Char? = null
-//
-//            if(cb_male.isChecked){
-//                gender = 'M'
-//            }else if(cb_female.isChecked){
-//                gender='F'
-//            }
+            val phnum = tf_phnum.text.toString()
+            var gender : String = ""
 
+
+            if(cb_male.isChecked){
+                gender = "M"
+            }else if(cb_female.isChecked){
+              gender= "F"
+            }
+
+            if(TextUtils.isEmpty(username)){
+                tf_username.error = "Username is Require"
+                return@setOnClickListener
+            }
+
+            if(TextUtils.isEmpty(name)){
+                tf_name.error = "Name is Require"
+                return@setOnClickListener
+            }
+
+            if(TextUtils.isEmpty(phnum)){
+                tf_phnum.error="Contact Number is Require"
+                return@setOnClickListener
+            }
 
             if(TextUtils.isEmpty(email)){
                 tf_email.error = "Email is Require"
@@ -65,6 +84,14 @@ class RegisterActivity : AppCompatActivity() {
             }
 
 
+            val fbuser = user()
+            fbuser.username = username
+            fbuser.name = name
+            fbuser.email = email
+            fbuser.gender = gender
+            fbuser.phnum = phnum
+
+
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass).addOnCompleteListener{
                 if(!it.isSuccessful){
@@ -73,6 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                     toast("User Created Successfully")
 
                     val intent = Intent(this,MainActivity::class.java)
+                    saveUserTodatabase(fbuser)
                     finish()
                     startActivity(intent)
 
@@ -81,11 +109,28 @@ class RegisterActivity : AppCompatActivity() {
 
             }
 
+
+
+
         }
 
 
 
     }
+
+
+    private fun saveUserTodatabase(fbuser : user){
+
+        val uid = FirebaseAuth.getInstance().uid ?:""
+        val ref = FirebaseDatabase.getInstance().getReference("/Users/$uid")
+
+        ref.setValue(fbuser)
+
+    }
+
+
+
+
 
 
 
