@@ -35,6 +35,8 @@ class addactivity : Fragment() {
     var formate = SimpleDateFormat("dd/MM/yyyy", Locale.US)
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.US)
 
+
+    var selectedDATE : Date? = null
     var selectedPhotoUri : Uri? = null
 
     private var fkact = fkactivity()
@@ -92,6 +94,7 @@ class addactivity : Fragment() {
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
 
                 val date = formate.format(selectedDate.time)
+                selectedDATE = selectedDate.time
                 cna_date.setText(date.toString())
             },
                     now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
@@ -159,7 +162,8 @@ class addactivity : Fragment() {
             fkact.activity_title = cna_title.text.toString()
             fkact.activity_time_start = cna_time_from.text.toString()
             fkact.activity_time_end = cna_time_to.text.toString()
-            fkact.activity_date = cna_date.text.toString()
+            //fkact.activity_date = cna_date.text.toString()
+            fkact.activity_date = selectedDATE
             fkact.activity_address = cna_address.text.toString()
             fkact.activity_desc = cna_desc.text.toString()
             fkact.creator_id = FirebaseAuth.getInstance().uid.toString()
