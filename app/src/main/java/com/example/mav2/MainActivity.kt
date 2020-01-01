@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 }else{
 
                     val intent = Intent(this,homev2Activity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     finish()
                     startActivity(intent)
 

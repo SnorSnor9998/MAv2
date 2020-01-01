@@ -1,6 +1,7 @@
 package com.example.mav2
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.LocaleList
 import androidx.fragment.app.Fragment
@@ -39,6 +40,10 @@ class homeview : Fragment() {
 
     }
 
+    companion object{
+        val FKACT_KEY = ""
+    }
+
     private fun fetchFKactivity(){
         val ref = FirebaseDatabase.getInstance().getReference("/Activity").orderByChild("activity_date")
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -53,6 +58,15 @@ class homeview : Fragment() {
                         adapter.add(FKItem(fkact))
                     }
 
+                }
+                
+                adapter.setOnItemClickListener{ item, view ->  
+
+                    val fkactItem = item as FKItem
+
+                    val intent = Intent(view.context,fkactivity_page::class.java)
+                    intent.putExtra(FKACT_KEY,fkactItem.fkact.activity_title)
+                    startActivity(intent)
                 }
 
                 review_listActivity.adapter = adapter

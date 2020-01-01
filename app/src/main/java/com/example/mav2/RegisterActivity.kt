@@ -19,7 +19,6 @@ import org.jetbrains.anko.toast
 class RegisterActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -33,14 +32,12 @@ class RegisterActivity : AppCompatActivity() {
             cb_male.isChecked = false
         }
 
-
         text_gologinpage.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
             finish()
             startActivity(intent)
 
         }
-
         button_register.setOnClickListener {
 
 
@@ -83,15 +80,12 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             val fbuser = user()
             fbuser.username = username
             fbuser.name = name
             fbuser.email = email
             fbuser.gender = gender
             fbuser.phnum = phnum
-
-
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass).addOnCompleteListener{
                 if(!it.isSuccessful){
@@ -105,17 +99,8 @@ class RegisterActivity : AppCompatActivity() {
                     startActivity(intent)
 
                 }
-
-
             }
-
-
-
-
         }
-
-
-
     }
 
 
@@ -127,6 +112,12 @@ class RegisterActivity : AppCompatActivity() {
         fbuser.user_id = uid
 
         ref.setValue(fbuser)
+
+        val intent = Intent(this,homev2Activity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        finish()
+        startActivity(intent)
+
 
     }
 
