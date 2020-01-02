@@ -3,14 +3,10 @@ package com.example.mav2
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.LocaleList
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.*
 import com.example.mav2.`class`.fkactivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,7 +16,6 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.fkactivity_row_view.view.*
 import kotlinx.android.synthetic.main.fragment_homeview.*
 import java.text.SimpleDateFormat
@@ -35,7 +30,6 @@ class homeview : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         fetchFKactivity()
 
     }
@@ -45,7 +39,7 @@ class homeview : Fragment() {
     }
 
     private fun fetchFKactivity(){
-        val ref = FirebaseDatabase.getInstance().getReference("/Activity").orderByChild("activity_date")
+        val ref = FirebaseDatabase.getInstance().getReference("/Activity").orderByChild("activity_date/time")
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
 
             override fun onDataChange(p0: DataSnapshot) {
@@ -60,23 +54,16 @@ class homeview : Fragment() {
 
                 }
                 
-                adapter.setOnItemClickListener{ item, view ->  
-
+                adapter.setOnItemClickListener{ item, view ->
                     val fkactItem = item as FKItem
-
                     val intent = Intent(view.context,fkactivity_page::class.java)
-                    intent.putExtra(FKACT_KEY,fkactItem.fkact.activity_title)
+                    intent.putExtra(FKACT_KEY,fkactItem.fkact.activity_id)
                     startActivity(intent)
                 }
-
                 review_listActivity.adapter = adapter
             }
-
             override fun onCancelled(p0: DatabaseError) {
-
             }
-
-
         })
     }
 

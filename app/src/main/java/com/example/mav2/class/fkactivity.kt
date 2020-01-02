@@ -18,5 +18,7 @@ class fkactivity {
 
     var creator_id : String =""
 
+    var fkcat = fkcategory()
+
 
 }

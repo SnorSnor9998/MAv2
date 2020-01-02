@@ -11,10 +11,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -33,7 +31,7 @@ import android.content.ContentResolver as ContentResolver1
 class addactivity : Fragment() {
 
     var formate = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-    var timeFormat = SimpleDateFormat("hh:mm a", Locale.US)
+    var timeFormat = SimpleDateFormat("HH:mm", Locale.US)
 
 
     var selectedDATE : Date? = null
@@ -61,6 +59,7 @@ class addactivity : Fragment() {
                 val selectedTime = Calendar.getInstance()
                 selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 selectedTime.set(Calendar.MINUTE,minute)
+
                 val time = timeFormat.format(selectedTime.time)
                 cna_time_from.setText(time)
             },
@@ -74,6 +73,7 @@ class addactivity : Fragment() {
                 val selectedTime = Calendar.getInstance()
                 selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 selectedTime.set(Calendar.MINUTE,minute)
+
                 val time = timeFormat.format(selectedTime.time)
                 cna_time_to.setText(time)
             },
@@ -168,6 +168,13 @@ class addactivity : Fragment() {
             fkact.activity_desc = cna_desc.text.toString()
             fkact.creator_id = FirebaseAuth.getInstance().uid.toString()
 
+            fkact.fkcat.dryfood = cb_dryfood.isChecked
+            fkact.fkcat.freshfood = cb_fresh.isChecked
+            fkact.fkcat.frozenfood = cb_frozen.isChecked
+            fkact.fkcat.fruitandvege = cb_fandv.isChecked
+            fkact.fkcat.meat = cb_meat.isChecked
+            fkact.fkcat.refrige = cb_refriger.isChecked
+
 
 
             if(validate == true){
@@ -192,6 +199,10 @@ class addactivity : Fragment() {
 
 
     }
+
+    companion object{
+        val FKACT_KEY = ""
+    }
     private fun createFKActivity(imageUrl : String){
         val filename = UUID.randomUUID().toString()
         val dbact = FirebaseDatabase.getInstance().getReference("Activity/$filename")
@@ -201,7 +212,13 @@ class addactivity : Fragment() {
 
         dbact.setValue(fkact)
 
+        val intent = Intent(this.requireContext(),fkactivity_page::class.java)
+        intent.putExtra(FKACT_KEY,fkact.activity_id)
+        clear()
+        startActivity(intent)
+
     }
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -216,6 +233,24 @@ class addactivity : Fragment() {
 
         }
 
+    }
+
+
+    private fun clear(){
+        cna_title.setText("")
+        cna_time_from.setText(R.string.cna_timestart)
+        cna_time_to.setText(R.string.cna_timeend)
+        cna_date.setText(R.string.cna_date)
+        cna_address.setText("")
+        cna_desc.setText("")
+        cb_dryfood.isChecked = false
+        cb_fandv.isChecked = false
+        cb_fresh.isChecked = false
+        cb_frozen.isChecked = false
+        cb_meat.isChecked = false
+        cb_refriger.isChecked = false
+        cna_butt_uploadphoto.setBackgroundDrawable(null)
+        cna_butt_uploadphoto.setText(R.string.cna_upPhoto)
     }
 
 
