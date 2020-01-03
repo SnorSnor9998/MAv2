@@ -16,11 +16,13 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.mav2.`class`.fkVolunteer
 import com.example.mav2.`class`.fkactivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_addactivity.*
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 import android.content.ContentResolver as ContentResolver1
@@ -103,6 +105,22 @@ class addactivity : Fragment() {
         }
 
 
+        cb_volu.setOnClickListener {
+            if(cb_volu.isChecked){
+                cna_numVolu.isEnabled = true
+                cna_numVolu.hint = "Max. 30"
+            }else if(!cb_volu.isChecked){
+                cna_numVolu.isEnabled = false
+                cna_numVolu.hint = ""
+            }
+
+        }
+
+
+
+
+
+
         cna_button.setOnClickListener {
 
 
@@ -158,6 +176,30 @@ class addactivity : Fragment() {
                 validate = false
             }
 
+            if(cb_volu.isChecked ){
+
+
+                if(TextUtils.isEmpty(cna_numVolu.text)){
+                    textView20.setTextColor(Color.RED)
+                    cna_numVolu.hint = "Required"
+                    validate = false
+
+                }else{
+                    val tmp = Integer.parseInt(cna_numVolu.text.toString())
+                    if(tmp<0 || tmp >30){
+                        textView21.isVisible =true
+                        textView21.setText("Range 1~30")
+                        textView20.setTextColor(Color.RED)
+                        validate = false
+                    }
+                }
+
+
+
+
+            }
+
+
 
             fkact.activity_title = cna_title.text.toString()
             fkact.activity_time_start = cna_time_from.text.toString()
@@ -178,6 +220,12 @@ class addactivity : Fragment() {
 
 
             if(validate == true){
+
+                if(cb_volu.isChecked){
+                    fkact.volunteer = true
+                }
+
+
                 uploadImageToFirebase()
                 Toast.makeText(this.requireContext(),"Activity is created",Toast.LENGTH_SHORT).show()
             }
@@ -207,10 +255,26 @@ class addactivity : Fragment() {
         val filename = UUID.randomUUID().toString()
         val dbact = FirebaseDatabase.getInstance().getReference("Activity/$filename")
 
+
+
+
+
+
         fkact.activity_imageUrl = imageUrl
         fkact.activity_id = filename
 
         dbact.setValue(fkact)
+
+
+        if(cb_volu.isChecked) {
+            val dbvolu = FirebaseDatabase.getInstance().getReference("Volunteer/$filename")
+            val fkvolu = fkVolunteer()
+            fkvolu.activityid = filename
+            val tmp = Integer.parseInt(cna_numVolu.text.toString())
+            fkvolu.size_of_volunteer = tmp
+            dbvolu.setValue(fkvolu)
+        }
+
 
         val intent = Intent(this.requireContext(),fkactivity_page::class.java)
         intent.putExtra(FKACT_KEY,fkact.activity_id)
@@ -251,6 +315,19 @@ class addactivity : Fragment() {
         cb_refriger.isChecked = false
         cna_butt_uploadphoto.setBackgroundDrawable(null)
         cna_butt_uploadphoto.setText(R.string.cna_upPhoto)
+
+        cb_volu.isChecked = false
+        cna_numVolu.setText("")
+        tv_typefooderror.isVisible = false
+        textView21.isVisible= false
+
+        textView14.setTextColor(Color.BLACK)
+        textView15.setTextColor(Color.BLACK)
+        textView22.setTextColor(Color.BLACK)
+        textView16.setTextColor(Color.BLACK)
+        textView17.setTextColor(Color.BLACK)
+        textView18.setTextColor(Color.BLACK)
+        textView20.setTextColor(Color.BLACK)
     }
 
 

@@ -20,5 +20,7 @@ class fkactivity {
 
     var fkcat = fkcategory()
 
+    var volunteer : Boolean = false
+
 
 }

@@ -41,6 +41,8 @@
     <string name="cna_timeend">End</string>
     <string name="cna_upPhoto">Upload A Photo</string>
     <string name="cna_foodPre">Food Prepare</string>
+    <string name="cna_volu">Volunteer</string>
+    <string name="cna_needed">Needed</string>
 
 
     <string name="food_dryfoods">Dry foods</string>
@@ -51,6 +53,8 @@
     <string name="food_meat">Meat</string>
 
     <string name="validate_required">Required</string>
+
+    <string name="butt_joinVolu">Join Volunteer</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

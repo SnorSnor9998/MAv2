@@ -136,12 +136,12 @@
                 android:id="@+id/cb_dryfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="130dp"
-                android:layout_marginLeft="130dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="132dp"
+                android:layout_marginLeft="132dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/food_dryfoods"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cna_desc" />
+                app:layout_constraintTop_toBottomOf="@+id/cb_volu" />
 
             <Button
                 android:id="@+id/cna_time_from"
@@ -291,6 +291,52 @@
                 app:layout_constraintEnd_toEndOf="@+id/textView18"
                 app:layout_constraintStart_toStartOf="@+id/textView18"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+            <CheckBox
+                android:id="@+id/cb_volu"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/cna_needed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cna_desc" />
+
+            <EditText
+                android:id="@+id/cna_numVolu"
+                android:layout_width="121dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="number"
+                app:layout_constraintStart_toEndOf="@+id/cb_volu"
+                app:layout_constraintTop_toTopOf="@+id/cb_volu" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/cna_volu"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/cb_volu"
+                app:layout_constraintTop_toTopOf="@+id/cb_volu" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/cna_numVolu"
+                app:layout_constraintStart_toStartOf="@+id/cna_numVolu"
+                app:layout_constraintTop_toBottomOf="@+id/cna_numVolu" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
