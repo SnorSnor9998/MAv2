@@ -1,15 +1,10 @@
 package com.example.mav2
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import com.example.mav2.`class`.fkVolunteer
 import com.example.mav2.`class`.fkactivity
-import com.example.mav2.`class`.user
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -58,44 +53,44 @@ class fkactivity_page : AppCompatActivity() {
 
                         var formate = SimpleDateFormat("dd/MM/yyyy", Locale.US)
                         val tmpdate = fkact.activity_date
-                        cna_date.text = formate.format(tmpdate)
+                        butt_date.text = formate.format(tmpdate)
 
                         cna_address.setText(fkact.activity_address)
 
                         cna_desc.setText(fkact.activity_desc)
 
                         if(fkact.fkcat.dryfood)
-                            cb_dryfood.isChecked = true
+                            fl_dryfood.isChecked = true
                         else
-                            cb_dryfood.isVisible = false
+                            fl_dryfood.isVisible = false
 
                         if(fkact.fkcat.freshfood)
-                            cb_fresh.isChecked = true
+                            fl_fresh.isChecked = true
                         else
-                            cb_fresh.isVisible = false
+                            fl_fresh.isVisible = false
 
                         if(fkact.fkcat.frozenfood)
-                            cb_frozen.isChecked = true
+                            fl_frozen.isChecked = true
                         else
-                            cb_frozen.isVisible = false
+                            fl_frozen.isVisible = false
 
                         if(fkact.fkcat.fruitandvege)
-                            cb_fandv.isChecked = true
+                            fl_fandv.isChecked = true
                         else
-                            cb_fandv.isVisible = false
+                            fl_fandv.isVisible = false
 
                         if(fkact.fkcat.meat)
-                            cb_meat.isChecked = true
+                            fl_meat.isChecked = true
                         else
-                            cb_meat.isVisible = false
+                            fl_meat.isVisible = false
 
                         if(fkact.fkcat.refrige)
-                            cb_refriger.isChecked = true
+                            fl_refriger.isChecked = true
                         else
-                            cb_refriger.isVisible = false
+                            fl_refriger.isVisible = false
 
 
-                        //if(!fkact.volunteer || fkact.creator_id.equals(FirebaseAuth.getInstance().uid ?:""))
+                        //if(!fkact.volunteer || fkact.creator_id.equals(FirebaseAuth.getInstance().uid ?:"")){
                         if(!fkact.volunteer){
                            cna_button.isVisible = false
                         }else{

@@ -89,7 +89,7 @@
                 android:ems="10"
 
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cna_date" />
+                app:layout_constraintTop_toBottomOf="@+id/butt_date" />
 
             <TextView
                 android:id="@+id/cna_desc"
@@ -105,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cna_address" />
 
             <CheckBox
-                android:id="@+id/cb_dryfood"
+                android:id="@+id/fl_dryfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -166,11 +166,11 @@
                 android:text="@string/cna_date"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/cna_date"
-                app:layout_constraintTop_toTopOf="@+id/cna_date" />
+                app:layout_constraintEnd_toStartOf="@+id/butt_date"
+                app:layout_constraintTop_toTopOf="@+id/butt_date" />
 
             <TextView
-                android:id="@+id/cna_date"
+                android:id="@+id/butt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="130dp"
@@ -194,7 +194,7 @@
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_refriger" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_refriger" />
 
             <ImageView
                 android:id="@+id/cna_butt_uploadphoto"
@@ -206,7 +206,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
-                android:id="@+id/cb_fandv"
+                android:id="@+id/fl_fandv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -216,10 +216,10 @@
                 android:enabled="true"
                 android:text="@string/food_fandv"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_dryfood" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_dryfood" />
 
             <CheckBox
-                android:id="@+id/cb_fresh"
+                android:id="@+id/fl_fresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -229,10 +229,10 @@
                 android:enabled="true"
                 android:text="@string/food_fresh"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_fandv" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_fandv" />
 
             <CheckBox
-                android:id="@+id/cb_frozen"
+                android:id="@+id/fl_frozen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -242,10 +242,10 @@
                 android:enabled="true"
                 android:text="@string/food_letitgoooo"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_fresh" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_fresh" />
 
             <CheckBox
-                android:id="@+id/cb_meat"
+                android:id="@+id/fl_meat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -255,10 +255,10 @@
                 android:enabled="true"
                 android:text="@string/food_meat"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_frozen" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_frozen" />
 
             <CheckBox
-                android:id="@+id/cb_refriger"
+                android:id="@+id/fl_refriger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="140dp"
@@ -268,7 +268,7 @@
                 android:enabled="true"
                 android:text="@string/food_refrige"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_meat" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_meat" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

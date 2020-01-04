@@ -1,8 +1,9 @@
 package com.example.mav2.`class`
 
+import androidx.lifecycle.ViewModel
 import java.util.*
 
-class fkactivity {
+class fkactivity : ViewModel(){
 
     var activity_id : String = ""
     var activity_title : String = ""

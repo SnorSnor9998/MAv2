@@ -13,19 +13,17 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.example.mav2.`class`.fkVolunteer
 import com.example.mav2.`class`.fkactivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_addactivity.*
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
-import android.content.ContentResolver as ContentResolver1
 
 /**
  * A simple [Fragment] subclass.
@@ -41,9 +39,13 @@ class addactivity : Fragment() {
 
     private var fkact = fkactivity()
 
+    private lateinit var viewModel: fkactivity
+
 
     override fun onStart() {
         super.onStart()
+
+
 
 
         cna_butt_uploadphoto.setOnClickListener{
@@ -86,7 +88,7 @@ class addactivity : Fragment() {
 
 
 
-        cna_date.setOnClickListener {
+        butt_date.setOnClickListener {
             val now = Calendar.getInstance()
             val selectedDate = Calendar.getInstance()
             val datePicker = DatePickerDialog(this.requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -97,7 +99,7 @@ class addactivity : Fragment() {
 
                 val date = formate.format(selectedDate.time)
                 selectedDATE = selectedDate.time
-                cna_date.setText(date.toString())
+                butt_date.setText(date.toString())
             },
                     now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
@@ -127,8 +129,8 @@ class addactivity : Fragment() {
 
             var validate : Boolean = true
 
-            if(cna_date.text.toString().equals("Date Picker")||cna_date.text.toString().equals("Date is required")){
-                cna_date.setText("Date is required")
+            if(butt_date.text.toString().equals("Date Picker")||butt_date.text.toString().equals("Date is required")){
+                butt_date.setText("Date is required")
                 textView22.setTextColor(Color.RED)
                 validate = false
             }
@@ -163,7 +165,7 @@ class addactivity : Fragment() {
                 validate = false
             }
 
-            if(!(cb_dryfood.isChecked||cb_fandv.isChecked||cb_fresh.isChecked||cb_frozen.isChecked||cb_meat.isChecked||cb_refriger.isChecked)){
+            if(!(fl_dryfood.isChecked||fl_fandv.isChecked||fl_fresh.isChecked||fl_frozen.isChecked||fl_meat.isChecked||fl_refriger.isChecked)){
                 tv_typefooderror.setText("(Pick At Least One)")
                 tv_typefooderror.setTextColor(Color.RED)
                 tv_typefooderror.isVisible = true
@@ -193,29 +195,32 @@ class addactivity : Fragment() {
                         validate = false
                     }
                 }
-
-
-
-
             }
+
+            val now : Date = Calendar.getInstance().time
+            if(now.after(selectedDATE)){
+                validate = false
+                date_error.setText("Must after\n Current Date")
+                date_error.isVisible = true
+            }
+
 
 
 
             fkact.activity_title = cna_title.text.toString()
             fkact.activity_time_start = cna_time_from.text.toString()
             fkact.activity_time_end = cna_time_to.text.toString()
-            //fkact.activity_date = cna_date.text.toString()
             fkact.activity_date = selectedDATE
             fkact.activity_address = cna_address.text.toString()
             fkact.activity_desc = cna_desc.text.toString()
             fkact.creator_id = FirebaseAuth.getInstance().uid.toString()
 
-            fkact.fkcat.dryfood = cb_dryfood.isChecked
-            fkact.fkcat.freshfood = cb_fresh.isChecked
-            fkact.fkcat.frozenfood = cb_frozen.isChecked
-            fkact.fkcat.fruitandvege = cb_fandv.isChecked
-            fkact.fkcat.meat = cb_meat.isChecked
-            fkact.fkcat.refrige = cb_refriger.isChecked
+            fkact.fkcat.dryfood = fl_dryfood.isChecked
+            fkact.fkcat.freshfood = fl_fresh.isChecked
+            fkact.fkcat.frozenfood = fl_frozen.isChecked
+            fkact.fkcat.fruitandvege = fl_fandv.isChecked
+            fkact.fkcat.meat = fl_meat.isChecked
+            fkact.fkcat.refrige = fl_refriger.isChecked
 
 
 
@@ -254,11 +259,6 @@ class addactivity : Fragment() {
     private fun createFKActivity(imageUrl : String){
         val filename = UUID.randomUUID().toString()
         val dbact = FirebaseDatabase.getInstance().getReference("Activity/$filename")
-
-
-
-
-
 
         fkact.activity_imageUrl = imageUrl
         fkact.activity_id = filename
@@ -304,15 +304,15 @@ class addactivity : Fragment() {
         cna_title.setText("")
         cna_time_from.setText(R.string.cna_timestart)
         cna_time_to.setText(R.string.cna_timeend)
-        cna_date.setText(R.string.cna_date)
+        butt_date.setText(R.string.cna_date)
         cna_address.setText("")
         cna_desc.setText("")
-        cb_dryfood.isChecked = false
-        cb_fandv.isChecked = false
-        cb_fresh.isChecked = false
-        cb_frozen.isChecked = false
-        cb_meat.isChecked = false
-        cb_refriger.isChecked = false
+        fl_dryfood.isChecked = false
+        fl_fandv.isChecked = false
+        fl_fresh.isChecked = false
+        fl_frozen.isChecked = false
+        fl_meat.isChecked = false
+        fl_refriger.isChecked = false
         cna_butt_uploadphoto.setBackgroundDrawable(null)
         cna_butt_uploadphoto.setText(R.string.cna_upPhoto)
 
@@ -320,6 +320,7 @@ class addactivity : Fragment() {
         cna_numVolu.setText("")
         tv_typefooderror.isVisible = false
         textView21.isVisible= false
+        date_error.isVisible = false
 
         textView14.setTextColor(Color.BLACK)
         textView15.setTextColor(Color.BLACK)

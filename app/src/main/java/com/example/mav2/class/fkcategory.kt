@@ -1,6 +1,8 @@
 package com.example.mav2.`class`
 
-class fkcategory {
+import java.io.Serializable
+
+class fkcategory : Serializable{
 
     var dryfood : Boolean = false
     var fruitandvege : Boolean = false

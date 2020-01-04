@@ -90,8 +90,8 @@
                 android:text="@string/cna_foodcat"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/cb_dryfood"
-                app:layout_constraintTop_toTopOf="@+id/cb_dryfood" />
+                app:layout_constraintEnd_toStartOf="@+id/fl_dryfood"
+                app:layout_constraintTop_toTopOf="@+id/fl_dryfood" />
 
             <EditText
                 android:id="@+id/cna_title"
@@ -117,7 +117,7 @@
                 android:hint="@string/hint_address"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cna_date" />
+                app:layout_constraintTop_toBottomOf="@+id/butt_date" />
 
             <EditText
                 android:id="@+id/cna_desc"
@@ -133,7 +133,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cna_address" />
 
             <CheckBox
-                android:id="@+id/cb_dryfood"
+                android:id="@+id/fl_dryfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="132dp"
@@ -192,22 +192,19 @@
                 android:text="@string/cna_date"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/cna_date"
-                app:layout_constraintTop_toTopOf="@+id/cna_date" />
+                app:layout_constraintEnd_toStartOf="@+id/butt_date"
+                app:layout_constraintTop_toTopOf="@+id/butt_date" />
 
             <Button
-                android:id="@+id/cna_date"
+                android:id="@+id/butt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="130dp"
                 android:layout_marginLeft="130dp"
                 android:layout_marginTop="16dp"
-
                 android:background="@drawable/custom_button"
                 android:backgroundTint="@color/theme_color"
-
                 android:ems="10"
-
                 android:text="@string/cna_datepicker"
                 android:textColor="@color/common_google_signin_btn_text_dark_default"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +221,7 @@
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_refriger" />
+                app:layout_constraintTop_toBottomOf="@+id/fl_refriger" />
 
             <Button
                 android:id="@+id/cna_butt_uploadphoto"
@@ -237,49 +234,49 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
-                android:id="@+id/cb_fandv"
+                android:id="@+id/fl_fandv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/food_fandv"
-                app:layout_constraintStart_toStartOf="@+id/cb_dryfood"
-                app:layout_constraintTop_toBottomOf="@+id/cb_dryfood" />
+                app:layout_constraintStart_toStartOf="@+id/fl_dryfood"
+                app:layout_constraintTop_toBottomOf="@+id/fl_dryfood" />
 
             <CheckBox
-                android:id="@+id/cb_fresh"
+                android:id="@+id/fl_fresh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/food_fresh"
-                app:layout_constraintStart_toStartOf="@+id/cb_fandv"
-                app:layout_constraintTop_toBottomOf="@+id/cb_fandv" />
+                app:layout_constraintStart_toStartOf="@+id/fl_fandv"
+                app:layout_constraintTop_toBottomOf="@+id/fl_fandv" />
 
             <CheckBox
-                android:id="@+id/cb_frozen"
+                android:id="@+id/fl_frozen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/food_letitgoooo"
-                app:layout_constraintStart_toStartOf="@+id/cb_fresh"
-                app:layout_constraintTop_toBottomOf="@+id/cb_fresh" />
+                app:layout_constraintStart_toStartOf="@+id/fl_fresh"
+                app:layout_constraintTop_toBottomOf="@+id/fl_fresh" />
 
             <CheckBox
-                android:id="@+id/cb_meat"
+                android:id="@+id/fl_meat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/food_meat"
-                app:layout_constraintStart_toStartOf="@+id/cb_frozen"
-                app:layout_constraintTop_toBottomOf="@+id/cb_frozen" />
+                app:layout_constraintStart_toStartOf="@+id/fl_frozen"
+                app:layout_constraintTop_toBottomOf="@+id/fl_frozen" />
 
             <CheckBox
-                android:id="@+id/cb_refriger"
+                android:id="@+id/fl_refriger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/food_refrige"
-                app:layout_constraintStart_toStartOf="@+id/cb_meat"
-                app:layout_constraintTop_toBottomOf="@+id/cb_meat" />
+                app:layout_constraintStart_toStartOf="@+id/fl_meat"
+                app:layout_constraintTop_toBottomOf="@+id/fl_meat" />
 
             <TextView
                 android:id="@+id/tv_typefooderror"
@@ -337,6 +334,19 @@
                 app:layout_constraintEnd_toEndOf="@+id/cna_numVolu"
                 app:layout_constraintStart_toStartOf="@+id/cna_numVolu"
                 app:layout_constraintTop_toBottomOf="@+id/cna_numVolu" />
+
+            <TextView
+                android:id="@+id/date_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="TextView"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/butt_date"
+                app:layout_constraintStart_toEndOf="@+id/butt_date"
+                app:layout_constraintTop_toTopOf="@+id/butt_date" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
