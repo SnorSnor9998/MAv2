@@ -7,6 +7,9 @@
     <string name="wel_msg">Welcome To</string>
     <string name="text_login">Login</string>
     <string name="text_register">Register</string>
+    <string name="text_forgotPass">Forgot Password</string>
+    <string name="text_passreset">Password Reset</string>
+    <string name="text_submit">Submit</string>
 
 
     <string name="text_username">Username</string>

@@ -9,22 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".forgotPass">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
 
-        <activity android:name=".filter" >
+        </activity>
+        <activity android:name=".filter">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".homev2Activity" />
-
         </activity>
 
-        <activity android:name=".filterResult">
-
-        </activity>
+        <activity android:name=".filterResult"></activity>
 
         <activity
             android:name=".homev2Activity"
             android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".RegisterActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".fkactivity_page">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

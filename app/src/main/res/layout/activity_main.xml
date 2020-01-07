@@ -12,7 +12,7 @@
         android:layout_height="190dp"
         android:layout_marginStart="85dp"
         android:layout_marginLeft="85dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
         android:contentDescription="applogo"
@@ -61,7 +61,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/text_email"
         android:textColor="@color/theme_color"
         app:layout_constraintStart_toStartOf="@+id/tf_email"
@@ -86,7 +86,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/text_password"
         android:textColor="@color/theme_color"
         app:layout_constraintStart_toStartOf="@+id/tf_password"
@@ -113,7 +113,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="81dp"
         android:layout_marginRight="81dp"
         android:background="@drawable/custom_button"
@@ -139,5 +139,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+    <TextView
+        android:id="@+id/txt_forgetPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_forgotPass"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
